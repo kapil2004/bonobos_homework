@@ -15,5 +15,9 @@ module Bonobos
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => 'http://localhost:8080',
+      'Access-Control-Request-Method' => %w{GET OPTIONS}.join(",")
+    }
   end
 end
