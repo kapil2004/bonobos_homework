@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     if params[:term] && product = Product.search(params[:term])
       render json: product
     else
-      render json: { product: {} }
+      render json: { product: nil }
     end
   end
 

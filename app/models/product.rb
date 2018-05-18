@@ -13,14 +13,8 @@ class Product < ApplicationRecord
       only: [:name, :description, :image],
       include: {
         pieces: {
-          only: [
-            :waist,
-            :length,
-            :count
-          ],
-          methods: [
-            :style_name
-          ]
+          only: [:waist, :length, :count],
+          methods: [:style_name]
         }
       }
     )
