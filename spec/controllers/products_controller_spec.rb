@@ -30,6 +30,30 @@ RSpec.describe ProductsController, type: :request do
       expect(styles).to eq ['jet blues', 'grey dogs']
     end
 
+    it "responds with product when there is a partial name match" do
+      get "/products/search?term=jetsetter"
+
+      product = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(product[:name]).to eq "jetsetter jeans"
+      expect(product[:pieces].size).to eq 1
+      styles = product[:pieces].map{ |piece| piece[:style_name] }.uniq
+      expect(styles).to eq ['grey dogs']
+    end
+
+    it "responds with product when any one of the search term words match" do
+      get "/products/search?term=jetsetter shirt"
+
+      product = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq 200
+      expect(product[:name]).to eq "jetsetter jeans"
+      expect(product[:pieces].size).to eq 1
+      styles = product[:pieces].map{ |piece| piece[:style_name] }.uniq
+      expect(styles).to eq ['grey dogs']
+    end
+
     it "responds with product when there is a fuzzy match" do
       get "/products/search?term=wish"
 

@@ -4,8 +4,7 @@ class Product < ApplicationRecord
 
   def self.search(term)
     return nil if term.blank?
-
-    where(name: term).first || fuzzy_match(term)
+    exact_match(term) || word_match(term) || fuzzy_match(term)
   end
 
   def as_json(options={})
@@ -21,6 +20,20 @@ class Product < ApplicationRecord
   end
 
   private
+
+  def self.exact_match(term)
+    where(name: term).first
+  end
+
+  def self.word_match(term)
+    words = term.split(' ')
+    # return nil if words.size == 1
+    words.each do |word|
+      product = Product.where("name LIKE ?", "%#{word}%").first
+      return product if product
+    end
+    nil
+  end
 
   def self.fuzzy_match(term)
     percent_match = {}

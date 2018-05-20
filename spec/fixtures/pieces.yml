@@ -1,33 +1,47 @@
-piece_1:
+piece_wc_1:
   product: washed_chinos
   style: jet_blues
   waist: 28
   length: 30
   count: 6
 
-piece_2:
+piece_wc_2:
   product: washed_chinos
   style: jet_blues
   waist: 28
   length: 32
   count: 1
 
-piece_3:
+piece_wc_3:
   product: washed_chinos
   style: jet_blues
   waist: 28
   length: 34
   count: 74
 
-piece_4:
+piece_wc_4:
   product: washed_chinos
   style: grey_dogs
   waist: 30
   length: 30
   count: 17
 
-piece_5:
+piece_wc_5:
   product: washed_chinos
+  style: grey_dogs
+  waist: 30
+  length: 32
+  count: 45
+
+piece_jj_1:
+  product: jetsetter_jeans
+  style: grey_dogs
+  waist: 30
+  length: 32
+  count: 45
+
+piece_tj_1:
+  product: travel_jeans
   style: grey_dogs
   waist: 30
   length: 32
