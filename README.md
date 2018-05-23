@@ -27,7 +27,8 @@ This app uses RSpec for testing. Run the following command to run tests.
 #### Logic for finding products
 1. If the search term is empty, return a null product in JSON response.
 2. If a search term is provided, first try to find a product with a exact match and return the product if found.
-3. If there is no exact match, use fuzzy match logic. Here I see which product's name includes the most number of characters from the search term and return the product with the maximum character matches found. This logic is a bit flawed and can be improved further.
+3. If there is no exact match, I use words from the search term to do a SQL 'LIKE' match with product name.
+4. If there is still no product found, I use fuzzy match logic. Here I see which product's name includes the most number of characters from the search term and return the product with the maximum character matches found.
 
 ### Goal #3
 
@@ -40,7 +41,7 @@ I used a simple React based frontend for the webpage. Start the React app as fol
 ```
 > cd bonobos_hw_frontend
 > npm install
-> npm start
+> npm run start
 ```
 
 Goto http://localhost:8080. You should see a simple form with a search input. After you enter a search term and submit the form, you should see one product returned as a result below the form.
